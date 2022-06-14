@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+        />
+        <title>KIMMINHEE PORTFOLIO</title>
+        <meta charset="UTF-8" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/common.css"
+            media="all"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/page_hover.css"
+            media="all"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/jquery.modal.min.css"
+            media="all"
+        />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+            type="text/css"
+        />
+        <script src="js/jquery-1.12.0.min.js" type="text/javascript"></script>
+        <script
+            type="text/javascript"
+            src="js/jquery.particleground.js"
+        ></script>
+        <script type="text/javascript" src="js/demo.js"></script>
+        <!-- Remember to include jQuery :) -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"
+            type="text/javascript"
+        ></script>
+        <!-- jQuery Modal -->
+        <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"
+            type="text/javascript"
+        ></script>
+        <script type="text/javascript">
+            $(function () {
+                //jQuery 시작
+                var c = 0; // 각 콘텐츠 순서번호
+                $("nav .pf_hd").eq(c).find("a").addClass("on"); // 메뉴에 선택된 페이지에 검정색 표시
+
+                $("nav .pf_hd").click(function () {
+                    c = $(this).index();
+                    var h_top = $("#wrap > section").eq(c).offset().top - 49;
+                    //화면을 기준으로 해당 개체의 높이 구함
+
+                    $("html, body").animate(
+                        {
+                            scrollTop: h_top,
+                        },
+                        400
+                    ); // 0.4초 동안 위로 스크롤 해라
+                    return false;
+                });
+
+                // 화면이 200px 이동시 go top 버튼 보임
+                var offset = 200;
+                $(window).scroll(function () {
+                    var st = $(this).scrollTop();
+                    if (st > offset) {
+                        $(".go_top").fadeIn(500);
+                    } else {
+                        $(".go_top").fadeOut(500);
+                    }
+                    //각 콘텐츠 위치에 도달하면 메뉴 선택된 스타일 적용
+                    $("section").each(function () {
+                        var i = $(this).index();
+
+                        if ($(this).offset().top - 50 <= st) {
+                            $(".pf_hd a").removeClass("on");
+                            $(".pf_hd").eq(i).find("a").addClass("on");
+                        }
+                    });
+                });
+                // 맨위로 화면 스크롤
+                $(".go_top").click(function () {
+                    $("html, body").animate(
+                        {
+                            scrollTop: 0,
+                        },
+                        500
+                    );
+                    return false;
+                });
+                //햄버거 버튼
+                $("#line-wrapper").click(function () {
+                    $(".line").removeClass("init");
+                    $("#line-top")
+                        .toggleClass("line-top")
+                        .toggleClass("top-reverse");
+                    $("#line-mid")
+                        .toggleClass("line-mid")
+                        .toggleClass("mid-reverse");
+                    $("#line-bot")
+                        .toggleClass("line-bot")
+                        .toggleClass("bot-reverse");
+                });
+                ///햄버거 메뉴 hide show
+                $(document).ready(function () {
+                    $("#wrapper").click(function () {
+                        $("nav").slideToggle(300);
+                    });
+                });
+            }); //jQuery 종료
+        </script>
+        <!--[if lt IE 9]>
+            <script type="text/javascript" src="js/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="wrapping">
+            <!--header-->
+            <header>
+                <nav>
+                    <div class="pf_hd">
+                        <a href="#home">[HOME]</a>
+                    </div>
+                    <div class="pf_hd">
+                        <a href="#portfolio">[PORTFOLIO]</a>
+                    </div>
+                    <div class="pf_hd">
+                        <a href="#aboutme">[ABOUT ME]</a>
+                    </div>
+                    <div class="pf_hd">
+                        <a href="#contact">[CONTACT]</a>
+                    </div>
+                </nav>
+            </header>
+            <div id="wrapper">
+                <div id="line-wrapper">
+                    <div id="line-top" class="line init top-reverse"></div>
+                    <div id="line-mid" class="line init mid-reverse"></div>
+                    <div id="line-bot" class="line init bot-reverse"></div>
+                </div>
+            </div>
+            <!--section-->
+            <div id="wrap">
+                <section id="home">
+                    <div class="f_bg"></div>
+                    <!--배경화면-->
+                    <div id="particles"></div>
+                    <!--제이쿼리-->
+                    <div>
+                        <h1>FRONTEND DEVELOPER</h1>
+                        <h4>
+                            백지의 문서 위에 View를 구현하는 것에 흥미를 가지고
+                            있습니다.<br />
+                            만드는 것을 넘어 더 잘 만드는 것에 대해
+                            고민합니다.<br />
+                            프론트엔드와 백엔드 영역을 넘나들며 디바이스 안의
+                            세계를 가꾸어나가는 것이 목표입니다.<br /><br /><br /><br /><br />
+                        </h4>
+                    </div>
+                </section>
+                <section id="portfolio">
+                    <div style="display: none">
+                        <figure class="snip1445">
+                            <a href="#ex6" rel="modal:open">
+                                <img src="#" alt="111" />
+                            </a>
+                            <figcaption>
+                                <div>
+                                    <h2>..</h2>
+                                    <h4>..</h4>
+                                </div>
+                            </figcaption>
+                        </figure>
+                        <div class="pf_bt_div">
+                            <ul>
+                                <li>* 프로젝트 이름 *<br /><br /></li>
+                                <li>[상세 분류]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="display: none">
+                        <figure class="snip1445">
+                            <a href="#ex5" rel="modal:open">
+                                <img src="#" alt="222" />
+                            </a>
+                            <figcaption>
+                                <div>
+                                    <h2>..</h2>
+                                    <h4>..</h4>
+                                </div>
+                            </figcaption>
+                        </figure>
+                        <div class="pf_bt_div">
+                            <ul>
+                                <li>* 프로젝트 이름 *<br /><br /></li>
+                                <li>[상세 분류]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="display: none">
+                        <!--다소곳-->
+                        <figure class="snip1445">
+                            <img
+                                src="images/mh/dasogot.png"
+                                alt="다소곳 팀 프로젝트"
+                            />
+                            <figcaption>
+                                <div>
+                                    <h2>DASOGOT</h2>
+                                    <h4>상세보기</h4>
+                                </div>
+                            </figcaption>
+                            <a href="#ex4" rel="modal:open"></a>
+                        </figure>
+                        <div class="pf_bt_div">
+                            <ul>
+                                <li>
+                                    * 부트스트랩 다소곳 쇼핑몰 *<br /><br />
+                                </li>
+                                <li>[팀 프로젝트 연습]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <!--한사랑-->
+                        <figure class="snip1445">
+                            <img
+                                src="images/mh/hansarang.png"
+                                alt="천안 한사랑 요양병원"
+                            />
+                            <figcaption>
+                                <div>
+                                    <h2>HANSARANG</h2>
+                                    <h4>상세보기</h4>
+                                </div>
+                            </figcaption>
+                            <a href="#ex3" rel="modal:open"></a>
+                        </figure>
+                        <div class="pf_bt_div">
+                            <ul>
+                                <li>* 천안 한사랑 요양병원 *<br /><br /></li>
+                                <li>[프로젝트]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <!--플라워샵-->
+                        <figure class="snip1445">
+                            <img src="images/mh/fs.png" alt="플라워샵" />
+                            <figcaption>
+                                <div>
+                                    <h2>FLOWER SHOP</h2>
+                                    <h4>상세보기</h4>
+                                </div>
+                            </figcaption>
+                            <a href="#ex2" rel="modal:open"></a>
+                        </figure>
+                        <div class="pf_bt_div">
+                            <ul>
+                                <li>* 플라워 샵 *<br /><br /></li>
+                                <li>[개인 연습]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <!--알라딘 커뮤니케이션-->
+                        <figure class="snip1445">
+                            <img
+                                src="images/mh/mhi.PNG"
+                                alt="알라딘 커뮤니케이션"
+                            />
+                            <figcaption>
+                                <div>
+                                    <h2>ALADIN</h2>
+                                    <h4>상세보기</h4>
+                                </div>
+                            </figcaption>
+                            <a href="#ex1" rel="modal:open"></a>
+                        </figure>
+                        <div class="pf_bt_div">
+                            <ul>
+                                <li>* 알라딘 커뮤니케이션 *<br /><br /></li>
+                                <li>[개인 연습]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="aboutme">
+                    <div class="pf0">
+                        <h2>
+                            <span
+                                ><i class="fa fa-graduation-cap"></i> WEB
+                                EDUCATION</span
+                            >
+                        </h2>
+                        <br />
+                        <br />
+                        <span>[ 그린컴퓨터아트학원 ]</span><br /><br />
+                        <span
+                            >[NCS기반]디지털 웹 디자인(웹 표준 & 웹
+                            접근성)실무과정 </span
+                        ><br />
+                        <span
+                            >웹표준과 웹접근성을 고려하여 웹 공간을 디자인하고
+                            구현<br />
+                            Photoshop, Illustrator, HTML5, CSS3, jQuery </span
+                        ><br />
+                        <span>2015.11.16 ~ 2016.02.19</span><br /><br />
+                        <br />
+                        <span>[ 한큐에 자바 ]</span><br /><br />
+                        <span>JAVA, JSP, ORACLE,Egovframework</span><br />
+                        <span>웹개발 취업반 실무교육</span><br />
+                        <span>2017.08.26 ~ 2017.12.30</span><br />
+                    </div>
+                    <div class="pf0">
+                        <h2>
+                            <span
+                                ><i class="fa fa-briefcase"></i>
+                                EXPERIENCE</span
+                            >
+                        </h2>
+                        <br />
+                        <br />
+                        <span>[ 버라이어티웍스 ]<br /><br /></span>
+                        <span
+                            >2016.06 ~ 2017.09<br />
+                            룽투코리아<br />
+                            모바일 게임 CS<br /><br /><br />
+                        </span>
+                        <span>[ 베스트 해피라인 ]<br /><br /> </span>
+                        <span
+                            >2016.02 ~ 2016.04<br />
+                            마케팅팀<br />
+                            병원 홈페이지 제작 / 유지 / 보수 / 관리 <br
+                        /></span>
+                    </div>
+                </section>
+                <section id="contact">
+                    <div class="pf0">
+                        <h2>
+                            <span
+                                ><i class="fa fa-user" aria-hidden="true"></i>
+                                PROFILE
+                            </span>
+                        </h2>
+                        <br /><br /><br />
+                        <span>Name : 김민희</span><br /><br />
+                        <span>Birth : 81.08.26</span><br /><br />
+                        <span>Address : 경기도 안양시 만안구</span><br /><br />
+                        <span
+                            >Education : 경희사이버대학 세무회계과 학사
+                            졸업</span
+                        ><br /><br />
+                        <span>Skill : HTML, CSS, Jquery, Photoshop</span
+                        ><br /><br /><br />
+                    </div>
+                    <div class="pf0">
+                        시작이 늦었습니다.<br /><br />
+                        아직은 응원과 격려의 박수를 받고 있지만<br /><br />
+                        멀지않은 미래에 축하의 박수를 받을 것이라 믿으며
+                        <br /><br />
+                        즐겁게 공부하고 배우고 있습니다.<br /><br />
+                        프론트엔드와 백엔드 영역을 넘나들며<br /><br />
+                        모니터 안의 세계를 가꾸어나가는 것이 목표입니다.<br /><br /><br />
+
+                        E-mail : cinnamon.eight26@gmail.com<br />
+                        blog :
+                        <a
+                            href="https://cinnamoneight26.github.io/"
+                            target="_blank"
+                            >https://cinnamoneight26.github.io</a
+                        ><br />
+                    </div>
+                </section>
+            </div>
+            <!-- go top 영역 -->
+            <div>
+                <a href="#" class="go_top">TOP</a>
+            </div>
+            <!--footer-->
+            <footer>
+                <span>Copyright © 2022 KIMMINHEE. All right reserved</span>
+            </footer>
+            <!-- Modal HTML embedded directly into document -->
+            <div id="ex1" class="modal">
+                <h2>알라딘 커뮤니케이션 기업 홈페이지</h2>
+                <br /><br />
+                <p>design, HTML, CSS, Jquery</p>
+                <p>메인, 서브 페이지 하드 코딩 & 제로보드 이용</p>
+                <p>반응형, 웹표준 코딩</p>
+                <br />
+                <p>
+                    <a
+                        href="https://cinnamoneight26.github.io/aladin_site"
+                        target="_blank"
+                        >[사이트 바로가기]</a
+                    >
+                </p>
+                <div class="md_img">
+                    <img src="images/mh/mhi_md.PNG" /><br /><br />
+                    <img src="images/mh/mhi_md_mob.PNG" />
+                </div>
+            </div>
+            <div id="ex2" class="modal">
+                <h2>플라워샵 간단 안내 홈페이지 - 횡스크롤</h2>
+                <br /><br />
+                <p>design, HTML, CSS, Jquery</p>
+                <p>메인, 서브 페이지 하드 코딩(인터랙티브 웹디자인북 참고)</p>
+                <br />
+                <p>
+                    <a
+                        href="https://cinnamoneight26.github.io/flowershop"
+                        target="_blank"
+                        >[사이트 바로가기]</a
+                    >
+                </p>
+                <div class="md_img">
+                    <img src="images/mh/fs_md1.png" /><br /><br />
+                    <img src="images/mh/fs_md2.png" /><br /><br />
+                    <img src="images/mh/fs_md3.png" /><br /><br />
+                    <img src="images/mh/fs_md4.png" /><br /><br />
+                    <img src="images/mh/fs_md5.png" /><br /><br />
+                </div>
+            </div>
+            <div id="ex3" class="modal">
+                <h2>천안 한사랑 요양병원 홈페이지</h2>
+                <br /><br />
+                <p>HTML, CSS, Jquery</p>
+                <p>메인, 서브 페이지 하드 코딩 & 그누보드 이용</p>
+                <br />
+                <p>
+                    <a href="http://myhansarang.co.kr" target="_blank"
+                        >[사이트 바로가기]</a
+                    >
+                </p>
+                <div class="md_img">
+                    <img src="images/mh/hansarang_md.png" />
+                </div>
+            </div>
+            <div id="ex4" class="modal">
+                <h2>다소곳 여성 속옷 쇼핑몰 팀 프로젝트 연습</h2>
+                <br /><br />
+                <p>부트스트랩, HTML, CSS, Jquery, JSP</p>
+                <p>부트스트랩 스킨을 타일즈 분리하여 jsp로 저장</p>
+                <div class="md_img">
+                    <img src="images/mh/dasogot_md.png" />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
